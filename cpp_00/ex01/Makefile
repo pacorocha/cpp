@@ -1,7 +1,10 @@
 CC		= c++
 CFLAGS	= -g -Wall -Wextra -Werror -std=c++98 -pedantic
 NAME 	= phonebook
-SRC 	= main.cpp
+SRC 	= main.cpp \
+			PhoneBook.class.cpp \
+			Contact.class.cpp
+
 OBJ		= $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR	= obj
 
