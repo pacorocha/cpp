@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 22:22:02 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/17 18:04:28 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/22 11:21:46 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,5 @@ int	main(void)
 {
 	PhoneBook	phonebook;
 
-	phonebook.run();
 	return (0);
 }

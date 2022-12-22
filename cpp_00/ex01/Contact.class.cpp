@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 21:26:36 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/19 22:31:52 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/21 20:46:40 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,6 @@ Contact::Contact( void ) {
 Contact::~Contact()
 {
 
-}
-
-int	Contact::getId( void ) const {
-	return this->_id;
-}
-
-std::string Contact::getFirstName( void ) const {
-	return this->_first_name;
-}
-
-std::string Contact::getLastName( void ) const {
-	return this->_last_name;
-}
-
-std::string Contact::getNickname( void ) const {
-	return this->_first_name;
 }
 
 void	Contact::setId( int id ) {
@@ -83,7 +67,7 @@ void	Contact::setPhoneNumber( void ) {
 		bool check = true;
 		while (check)
 		{
-			input = getAlphaVar("Phone Number");
+			input = getNumericVar("Phone Number");
 			check = checkEmptyString(input);
 		}
 		this->_phone_number = input;
@@ -102,6 +86,30 @@ void	Contact::setDarkestSecret( void ) {
 		input.clear();
 }
 
+int	Contact::getId( void ) const {
+	return this->_id;
+}
+
+std::string Contact::getFirstName( void ) const {
+	return this->_first_name;
+}
+
+std::string Contact::getLastName( void ) const {
+	return this->_last_name;
+}
+
+std::string Contact::getNickname( void ) const {
+	return this->_nickname;
+}
+
+std::string Contact::getPhoneNumber( void ) const {
+	return this->_phone_number;
+}
+
+std::string Contact::getDarkestSecret( void ) const {
+	return this->_darkest_secret;
+}
+
 std::string	Contact::getAlphaVar( std::string varname ) {
 		std::string input;
 		std::cout << "Please type contact's " << varname << ":" << std::endl;
@@ -112,10 +120,31 @@ std::string	Contact::getAlphaVar( std::string varname ) {
 			return (input);
 }
 
+std::string	Contact::getNumericVar( std::string varname ) {
+		std::string input;
+		std::cout << "Please type contact's " << varname << ":" << std::endl;
+		std::getline(std::cin, input);
+		if (input.length() < 1 || !Contact::isNumeric(input))
+			return (input = "");
+		else
+			return (input);
+}
+
 bool	Contact::isAlphabetic(std::string &str) {
 		int flag = 0;
 		for (size_t i = 0; i < str.length(); i++)
 			if (!isalpha(str[i]))
+				flag++;
+		if (flag > 0)
+			return (false);
+		else
+			return (true);
+}
+
+bool	Contact::isNumeric(std::string &str) {
+		int flag = 0;
+		for (size_t i = 0; i < str.length(); i++)
+			if (!isdigit(str[i]))
 				flag++;
 		if (flag > 0)
 			return (false);

@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 21:12:00 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/20 20:22:20 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/22 11:55:09 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,10 @@ PhoneBook::~PhoneBook( void ){
 bool PhoneBook::run( void ) {
 	std::string cmd;
 
+	cmd.clear();
 	std::getline(std::cin, cmd);
 	if (cmd.empty())
-		return (true);
+			return (true);
 	if (cmd == "ADD")
 		PhoneBook::addNewContact();
 	else if (cmd == "SEARCH")
@@ -69,17 +70,53 @@ void	PhoneBook::addNewContact() {
 
 void	PhoneBook::searchContacts( void ) {
 		int i = 0;
+		int j;
+
+		if (this->_total_contacts == 0)
+			std::cout << "You don't have any contacts in your phonebook." << std::endl;
 		while (i < this->_total_contacts)
 		{
 			std::cout << std::setw(10) << std::right;
-			std::cout << i + 1 << "|";
-			std::cout << std::setw(10) << std::right;
-			std::cout << this->_contacts[i].getFirstName() << "|";
-			std::cout << std::setw(10) << std::right;
-			std::cout << this->_contacts[i].getLastName() << "|";
-			std::cout << std::setw(10) << std::right;
-			std::cout << this->_contacts[i].getNickname() << std:: endl;
+			std::cout << i + 1 << " | ";
+			print_column(this->_contacts[i].getFirstName());
+			print_column(this->_contacts[i].getLastName());
+			print_column(this->_contacts[i].getNickname());
+			std::cout << std::endl;
 			i++;
 		}
 		std::cout << "Type the index of the contact to see all its data." << std::endl;
+		std::cin >> j;
+		while (1)
+		{
+			if(std::cin.fail())
+			{
+				std::cin.clear();
+				std::cin.ignore(__INT_MAX__,'\n');
+				printError("Input is not a valid integer.");
+				std::cin >> j;
+			}
+			if (j < 1 || j > 8 || j > this->_total_contacts)
+				return (printError("That is not a valid contact index. Type ADD, SEARCH or EXIT."));
+			if (!std::cin.fail())
+			{
+				std::cout << "First name: " << this->_contacts[j - 1].getFirstName() << std::endl;
+				std::cout << "Last name: " << this->_contacts[j - 1].getLastName() << std::endl;
+				std::cout << "Nickname: " << this->_contacts[j - 1].getNickname() << std::endl;
+				std::cout << "Phone Number: " << this->_contacts[j - 1].getPhoneNumber() << std::endl;
+				std::cout << "Darkest Secret: " << this->_contacts[j - 1].getDarkestSecret() << std::endl;
+				break ;
+			}
+		}
+}
+
+void PhoneBook::print_column(std::string str) {
+	std::cout << std::setw(10) << std::right;
+	if (str.size() > 9)
+		std::cout << str.substr(0, 9) + (std::string)"." << " | ";
+	else
+		std::cout << str << " | ";
+}
+
+void	PhoneBook::printError( std::string str ) {
+		std::cerr << "Error: " << str << std::endl;
 }

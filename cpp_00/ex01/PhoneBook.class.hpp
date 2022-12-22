@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 21:11:56 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/19 20:43:41 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/22 11:21:28 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ public:
 	void	addNewContact( void );
 	bool	run( void );
 	void	searchContacts( void );
+	void	printError( std::string str );
+	void	print_column(std::string str);
 
 private:
 	Contact	_contacts[8];
