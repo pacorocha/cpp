@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 21:26:36 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/21 20:46:40 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/22 22:41:18 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,10 +130,10 @@ std::string	Contact::getNumericVar( std::string varname ) {
 			return (input);
 }
 
-bool	Contact::isAlphabetic(std::string &str) {
+bool	Contact::isAlphabetic(std::string str) {
 		int flag = 0;
 		for (size_t i = 0; i < str.length(); i++)
-			if (!isalpha(str[i]))
+			if (!isalpha(str[i]) && str[i] != ' ')
 				flag++;
 		if (flag > 0)
 			return (false);
@@ -141,7 +141,7 @@ bool	Contact::isAlphabetic(std::string &str) {
 			return (true);
 }
 
-bool	Contact::isNumeric(std::string &str) {
+bool	Contact::isNumeric(std::string str) {
 		int flag = 0;
 		for (size_t i = 0; i < str.length(); i++)
 			if (!isdigit(str[i]))

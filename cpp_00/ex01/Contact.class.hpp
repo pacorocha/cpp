@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 21:26:40 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/22 11:21:32 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/22 22:33:18 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ public:
 	std::string	getNickname( void ) const;
 	std::string getPhoneNumber( void ) const;
 	std::string getDarkestSecret( void ) const;
-	bool		isAlphabetic( std::string &str );
-	bool		isNumeric(std::string &str);
+	bool		isAlphabetic( std::string str );
+	bool		isNumeric(std::string str);
 	std::string	getAlphaVar( std::string varname );
 	std::string	getNumericVar( std::string varname );
 	bool		checkEmptyString(std::string str);

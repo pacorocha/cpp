@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 21:12:00 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/22 11:55:09 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/22 22:31:27 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,37 +74,40 @@ void	PhoneBook::searchContacts( void ) {
 
 		if (this->_total_contacts == 0)
 			std::cout << "You don't have any contacts in your phonebook." << std::endl;
-		while (i < this->_total_contacts)
+		else
 		{
-			std::cout << std::setw(10) << std::right;
-			std::cout << i + 1 << " | ";
-			print_column(this->_contacts[i].getFirstName());
-			print_column(this->_contacts[i].getLastName());
-			print_column(this->_contacts[i].getNickname());
-			std::cout << std::endl;
-			i++;
-		}
-		std::cout << "Type the index of the contact to see all its data." << std::endl;
-		std::cin >> j;
-		while (1)
-		{
-			if(std::cin.fail())
+			while (i < this->_total_contacts)
 			{
-				std::cin.clear();
-				std::cin.ignore(__INT_MAX__,'\n');
-				printError("Input is not a valid integer.");
-				std::cin >> j;
+				std::cout << std::setw(10) << std::right;
+				std::cout << i + 1 << " | ";
+				print_column(this->_contacts[i].getFirstName());
+				print_column(this->_contacts[i].getLastName());
+				print_column(this->_contacts[i].getNickname());
+				std::cout << std::endl;
+				i++;
 			}
-			if (j < 1 || j > 8 || j > this->_total_contacts)
-				return (printError("That is not a valid contact index. Type ADD, SEARCH or EXIT."));
-			if (!std::cin.fail())
+			std::cout << "Type the index of the contact to see all its data." << std::endl;
+			std::cin >> j;
+			while (1)
 			{
-				std::cout << "First name: " << this->_contacts[j - 1].getFirstName() << std::endl;
-				std::cout << "Last name: " << this->_contacts[j - 1].getLastName() << std::endl;
-				std::cout << "Nickname: " << this->_contacts[j - 1].getNickname() << std::endl;
-				std::cout << "Phone Number: " << this->_contacts[j - 1].getPhoneNumber() << std::endl;
-				std::cout << "Darkest Secret: " << this->_contacts[j - 1].getDarkestSecret() << std::endl;
-				break ;
+				if(std::cin.fail())
+				{
+					std::cin.clear();
+					std::cin.ignore(__INT_MAX__,'\n');
+					printError("Input is not a valid integer.");
+					std::cin >> j;
+				}
+				if (j < 1 || j > 8 || j > this->_total_contacts)
+					return (printError("That is not a valid contact index. Type ADD, SEARCH or EXIT."));
+				if (!std::cin.fail())
+				{
+					std::cout << "First name: " << this->_contacts[j - 1].getFirstName() << std::endl;
+					std::cout << "Last name: " << this->_contacts[j - 1].getLastName() << std::endl;
+					std::cout << "Nickname: " << this->_contacts[j - 1].getNickname() << std::endl;
+					std::cout << "Phone Number: " << this->_contacts[j - 1].getPhoneNumber() << std::endl;
+					std::cout << "Darkest Secret: " << this->_contacts[j - 1].getDarkestSecret() << std::endl;
+					break ;
+				}
 			}
 		}
 }
