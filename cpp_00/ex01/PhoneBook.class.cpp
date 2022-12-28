@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 21:12:00 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/22 22:31:27 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/23 19:25:57 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,11 @@ void	PhoneBook::searchContacts( void ) {
 					std::cin >> j;
 				}
 				if (j < 1 || j > 8 || j > this->_total_contacts)
-					return (printError("That is not a valid contact index. Type ADD, SEARCH or EXIT."));
+				{
+					std::cin.clear();
+					printError("That is not a valid contact index. Type a valid integer.");
+					std::cin >> j;
+				}
 				if (!std::cin.fail())
 				{
 					std::cout << "First name: " << this->_contacts[j - 1].getFirstName() << std::endl;
