@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 20:19:22 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/28 21:37:25 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/29 19:56:23 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 class HumanB
 {
 public:
-    HumanB( std::string name );
-    ~HumanB();
+    HumanB(std::string name);
+    ~HumanB(void);
 
 	void	attack(void);
 	void	setWeapon(Weapon weapon);

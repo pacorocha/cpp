@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/28 19:31:35 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/29 19:57:22 by jfrancis         ###   ########.fr       */
+/*   Created: 2022/12/28 22:12:54 by jfrancis          #+#    #+#             */
+/*   Updated: 2022/12/29 22:32:24 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_H
-#define WEAPON_H
+#include "Replacer.hpp"
 
-#pragma once
-
-# include <iostream>
-# include <string>
-
-class Weapon
-{
-public:
-    Weapon(std::string type);
-    ~Weapon(void);
-
-	const std::string&	getType(void);
-	void		setType(std::string);
-private:
-	std::string _type;
-};
-
-#endif
+int	main(int argc, char** argv) {
+	if (argc != 4) {
+		std::cout << "Type ./sifl + filename + str1 + str2." << std::endl;
+		return(1);
+	}
+	Replacer replace(argv[1], argv[2], argv[3]);
+	return (0);
+}

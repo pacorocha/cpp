@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   Replacer.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/28 19:31:35 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/29 19:57:22 by jfrancis         ###   ########.fr       */
+/*   Created: 2022/12/29 19:42:16 by jfrancis          #+#    #+#             */
+/*   Updated: 2022/12/29 23:21:49 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_H
-#define WEAPON_H
+#ifndef REPLACER_H
+#define REPLACER_H
 
 #pragma once
 
-# include <iostream>
-# include <string>
+#include <iostream>
+#include <string>
+#include <fstream>
 
-class Weapon
+class Replacer
 {
 public:
-    Weapon(std::string type);
-    ~Weapon(void);
+    Replacer( char* filename, std::string str1, std::string str2 );
+    ~Replacer( void );
 
-	const std::string&	getType(void);
-	void		setType(std::string);
+	void	replaceString( void );
+	int		countReps(std::string& needle, std::string& haystack);
+
 private:
-	std::string _type;
+	char*		_filename;
+	std::string	_str1;
+	std::string	_str2;
 };
 
 #endif
