@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 20:19:22 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/29 19:56:23 by jfrancis         ###   ########.fr       */
+/*   Updated: 2023/01/02 21:59:15 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ public:
     ~HumanB(void);
 
 	void	attack(void);
-	void	setWeapon(Weapon weapon);
+	void	setWeapon(Weapon &weapon);
 
 private:
 	std::string	_name;

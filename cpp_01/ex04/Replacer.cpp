@@ -6,61 +6,64 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 19:42:03 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/29 23:21:35 by jfrancis         ###   ########.fr       */
+/*   Updated: 2023/01/02 20:16:45 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Replacer.hpp"
 
-Replacer::Replacer( char* filename, std::string str1, std::string str2 ) :
+Replacer::Replacer(int args, char* filename, std::string str1, std::string str2) :
+	_args(args),
 	_filename(filename),
 	_str1(str1),
 	_str2(str2) {
-	this->replaceString();
+	if (this->validateInput())
+		this->replaceString();
 }
 
 Replacer::~Replacer( void ) {}
+
+bool Replacer::printError(const char* error) {
+	std::cerr << error << std::endl;
+	return (false);
+}
+
+bool Replacer::validateInput(void)
+{
+	std::fstream file;
+
+	if (this->_args != 4) {
+		printError(INPUT_ERROR);
+		return(printError(WRONG_ARGUMENTS));
+	}
+	file.open(this->_filename);
+	if (!file)
+		return (printError(FILE_ERROR));
+	file.close();
+	if (this->_str1.empty() && this->_str2.empty())
+		return (printError(EMPTY_STRINGS));
+	return (true);
+}
 
 void Replacer::replaceString( void ) {
 	std::ifstream	ifs;
 	std::ofstream	ofs;
 	std::string		line;
+	std::string		tmp;
 	size_t			str_pos;
-	int				reps;
 
 	ifs.open(this->_filename);
 	ofs.open(std::string(this->_filename).append(".replace").c_str());
 	while(std::getline(ifs, line)) {
-		reps = countReps(this->_str1, line);
-		while (reps > 0)
-		{
-			str_pos = line.find(this->_str1);
-			if (str_pos != std::string::npos) {
-				line.insert(str_pos + _str1.length(), _str2);
-				line.erase(str_pos, _str1.length());
-			}
-			reps--;
+		while (line.find(_str1) != std::string::npos) {
+			str_pos = line.find(_str1);
+			tmp.append(line.substr(0, str_pos));
+			tmp.append(_str2);
+			line = line.substr(str_pos + _str1.size(), line.size());
 		}
-		ofs << line << std::endl;
+		tmp.append(line).push_back('\n');
 	}
+	ofs << tmp;
 	ofs.close();
 	ifs.close();
-}
-
-int Replacer::countReps(std::string& needle, std::string& haystack)
-{
-	int n = needle.length();
-	int h = haystack.length();
-	int r = 0;
-
-	for (int i = 0; i <= h - n; i++) {
-		int j;
-		for (j = 0; j < n; j++)
-			if (haystack[i + j] != needle[j])
-				break;
-		if (j == n) {
-			r++;
-		}
-	}
-	return (r);
 }
