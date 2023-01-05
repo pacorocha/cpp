@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 22:12:54 by jfrancis          #+#    #+#             */
-/*   Updated: 2023/01/05 01:16:24 by coder            ###   ########.fr       */
+/*   Updated: 2023/01/05 17:27:47 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ bool printError(const char* error) {
 
 bool	validateInput(int argc, char** argv) {
 	std::fstream	file;
-	
+
 	file.open(argv[1]);
 	if (!file)
 		return printError(FILE_ERROR);
@@ -33,13 +33,15 @@ bool	validateInput(int argc, char** argv) {
 	if (file.get(), file.eof())
 		return (printError(FILE_EMPTY));
 	file.close();
+	if (strcmp(argv[2], "") == 0)
+		return (printError(EMPTY_ORIGINAL_STRING));
 	if (strcmp(argv[2], "") == 0 && strcmp(argv[3], "") == 0)
 		return (printError(EMPTY_STRINGS));
 	return (true);
 }
 
 int	main(int argc, char** argv) {
-	
+
 	if (validateInput(argc, argv)) {
 		Replacer replacer(argv[1], argv[2], argv[3]);
 		replacer.replaceString();

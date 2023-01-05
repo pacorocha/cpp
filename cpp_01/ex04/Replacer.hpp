@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Replacer.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 19:42:16 by jfrancis          #+#    #+#             */
-/*   Updated: 2023/01/05 00:53:44 by coder            ###   ########.fr       */
+/*   Updated: 2023/01/05 17:26:51 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 #define FILE_ERROR "ERROR: Input file does not exist."
 #define FILE_EMPTY "ERROR: Input file is empty"
 #define EMPTY_STRINGS "ERROR: Both strings can't be empty."
+#define	EMPTY_ORIGINAL_STRING "ERROR: String to be replaced can't be empty."
 
 class Replacer
 {
