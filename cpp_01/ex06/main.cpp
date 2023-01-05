@@ -5,7 +5,7 @@ int	main(int argc, char **argv) {
 
 	if (argc != 2)
 	{
-		std::cout << "Yo're pretty stupid aren't you" << std::endl;
+		std::cout << "You have to type 2 arguments" << std::endl;
 		return (0);
 	}
 	harl.complain(argv[1]);
