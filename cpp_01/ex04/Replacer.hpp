@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Replacer.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 19:42:16 by jfrancis          #+#    #+#             */
-/*   Updated: 2023/01/02 20:05:48 by jfrancis         ###   ########.fr       */
+/*   Updated: 2023/01/05 00:53:44 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,13 @@
 class Replacer
 {
 public:
-    Replacer(int args, char* filename, std::string str1, std::string str2);
+    Replacer(char* filename, std::string str1, std::string str2);
     ~Replacer( void );
 
-	bool	printError(const char* error);
-	bool	validateInput(void);
 	void	replaceString( void );
 	int		countReps(std::string& needle, std::string& haystack);
 
 private:
-	int			_args;
 	char*		_filename;
 	std::string	_str1;
 	std::string	_str2;

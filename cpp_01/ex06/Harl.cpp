@@ -1,10 +1,10 @@
 #include "Harl.hpp"
 
-static	std::string levels[4] = {
-	"debug",
-	"info",
-	"warning",
-	"error"
+static	int levels[4] = {
+	1,
+	2,
+	3,
+	4
 };
 
 Harl::Harl(void) {}
@@ -37,15 +37,15 @@ void Harl::complain(std::string level) {
 	case "debug":
 		std::cout << "[ DEBUG ]" << std::endl;
 		(this->*fptr[0])();
-		/* fall through */
+		/* no break command, so will fall through */
 	case 1:
 		std::cout << "[ INFO ]" << std::endl;
 		(this->*fptr[1])();
-		/* fall through */
+		/* no break command, so will fall through */
 	case 2:
 		std::cout << "[ WARNING ]" << std::endl;
 		(this->*fptr[2])();
-		/* fall through */
+		/* no break command, so will fall through */
 	case 3:
 		std::cout << "[ ERROR ]" << std::endl;
 		(this->*fptr[3])();
