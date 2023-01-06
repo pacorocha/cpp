@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 22:12:54 by jfrancis          #+#    #+#             */
-/*   Updated: 2023/01/05 17:27:47 by jfrancis         ###   ########.fr       */
+/*   Updated: 2023/01/06 20:03:14 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ bool	validateInput(int argc, char** argv) {
 	if (file.get(), file.eof())
 		return (printError(FILE_EMPTY));
 	file.close();
-	if (strcmp(argv[2], "") == 0)
+	if (strcmp(argv[2], "") == 0 && strcmp(argv[3], "") != 0)
 		return (printError(EMPTY_ORIGINAL_STRING));
 	if (strcmp(argv[2], "") == 0 && strcmp(argv[3], "") == 0)
 		return (printError(EMPTY_STRINGS));
@@ -41,7 +41,7 @@ bool	validateInput(int argc, char** argv) {
 }
 
 int	main(int argc, char** argv) {
-
+	
 	if (validateInput(argc, argv)) {
 		Replacer replacer(argv[1], argv[2], argv[3]);
 		replacer.replaceString();

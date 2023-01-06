@@ -1,6 +1,6 @@
 CC		= c++
 CFLAGS	= -g -Wall -Wextra -Werror -std=c++98 -pedantic
-NAME 	= sifl
+NAME 	= sedisforlosers
 SRC 	= main.cpp \
 		  Replacer.cpp
 OBJ		= $(SRC:%.cpp=$(OBJ_DIR)/%.o)

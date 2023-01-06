@@ -1,5 +1,5 @@
 CC		= c++
-CFLAGS	= -g -Wall -Wextra -Werror -std=c++98 -pedantic
+CFLAGS	= -g -Wall -Wextra -Werror -std=c++98
 NAME 	= harl
 SRC 	= main.cpp \
 		  Harl.cpp

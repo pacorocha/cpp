@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Replacer.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 19:42:16 by jfrancis          #+#    #+#             */
-/*   Updated: 2023/01/05 23:28:03 by jfrancis         ###   ########.fr       */
+/*   Updated: 2023/01/06 20:00:22 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <string>
 #include <fstream>
 
-#define INPUT_ERROR "Type: ./sifl \"filename\" \"string 1\" \"string 2\""
+#define INPUT_ERROR "You must type: ./sifl \"filename\" \"string 1\" \"string 2\""
 #define WRONG_ARGUMENTS "ERROR: must type at least 3 arguments."
 #define FILE_ERROR "ERROR: Input file does not exist."
 #define FILE_EMPTY "ERROR: Input file is empty"

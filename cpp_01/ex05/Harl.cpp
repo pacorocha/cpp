@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 17:29:01 by jfrancis          #+#    #+#             */
-/*   Updated: 2023/01/05 17:29:03 by jfrancis         ###   ########.fr       */
+/*   Updated: 2023/01/06 17:41:53 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-static	std::string levels[4] = {
+std::string Harl::levels[4] = {
 	"debug",
 	"info",
 	"warning",
