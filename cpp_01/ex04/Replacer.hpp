@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Replacer.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 19:42:16 by jfrancis          #+#    #+#             */
-/*   Updated: 2023/01/05 17:26:51 by jfrancis         ###   ########.fr       */
+/*   Updated: 2023/01/06 02:55:40 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ public:
     ~Replacer( void );
 
 	void	replaceString( void );
-	int		countReps(std::string& needle, std::string& haystack);
 
 private:
 	char*		_filename;

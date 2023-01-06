@@ -2,6 +2,8 @@ CC		= c++
 CFLAGS	= -g -Wall -Wextra -Werror -std=c++98 -pedantic
 NAME 	= zombies
 SRC 	= Zombie.cpp \
+		  newZombie.cpp \
+		  randomChump.cpp \
 		  main.cpp
 OBJ		= $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR	= obj

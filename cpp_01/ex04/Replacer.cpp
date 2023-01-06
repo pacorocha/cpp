@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Replacer.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 19:42:03 by jfrancis          #+#    #+#             */
-/*   Updated: 2023/01/05 17:28:38 by jfrancis         ###   ########.fr       */
+/*   Updated: 2023/01/06 02:56:02 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ Replacer::Replacer(char* filename, std::string str1, std::string str2) :
 	_str2(str2) {}
 
 Replacer::~Replacer( void ) {}
-
-
 
 void Replacer::replaceString( void ) {
 	std::ifstream	ifs;

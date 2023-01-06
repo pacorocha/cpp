@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 18:36:21 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/29 19:53:13 by jfrancis         ###   ########.fr       */
+/*   Updated: 2023/01/06 03:15:54 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,9 @@ public:
     Zombie(std::string name);
     ~Zombie(void);
 
-	void	announce(void);
-	Zombie*	newZombie(std::string name);
-	void	randomChump(std::string name);
-
+	void		announce(void);
+	Zombie*		newZombie(std::string name);
+	static void	randomChump(std::string name);
 
 private:
 	std::string	_name;
