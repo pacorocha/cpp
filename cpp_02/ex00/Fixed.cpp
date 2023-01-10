@@ -9,9 +9,8 @@ Fixed::Fixed()
 
 Fixed::Fixed(const Fixed &copy)
 {
-	(void) copy;
 	std::cout << "\e[0;33mCopy Constructor called of Fixed\e[0m" << std::endl;
-	this->_fixed_point_number_value = copy.getRawBits();
+	*this = copy;
 }
 
 // Destructor
@@ -23,7 +22,6 @@ Fixed::~Fixed()
 // Operators
 Fixed & Fixed::operator=(const Fixed &assign)
 {
-	(void) assign;
 	std::cout << "\e[0;34mCopy assignment operator called of Fixed\e[0m" << std::endl;
 	this->_fixed_point_number_value = assign.getRawBits();
 	return *this;
