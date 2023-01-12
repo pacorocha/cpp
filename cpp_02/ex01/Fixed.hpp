@@ -9,7 +9,7 @@ class Fixed
 	public:
 		// Constructors
 		Fixed();
-		Fixed(const Fixed &copy);
+		Fixed(const Fixed& copy);
 		Fixed(const int integer);
 		Fixed(const float float_number);
 
@@ -17,7 +17,7 @@ class Fixed
 		~Fixed();
 
 		// Operators
-		Fixed & operator=(const Fixed &assign);
+		Fixed& operator=(const Fixed& rhs);
 
 		// Methods
 		float	toFloat( void ) const;
@@ -30,6 +30,6 @@ class Fixed
 		static const int	_fractional_bits;
 };
 
-std::ostream &operator<<( std::ostream &out, Fixed const &i );
+std::ostream& operator<<( std::ostream& out, Fixed const& i );
 
 #endif
