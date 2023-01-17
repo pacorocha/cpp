@@ -21,7 +21,7 @@ Fixed::Fixed(const float float_number) {
 }
 
 // Destructor
-Fixed::~Fixed() {}
+Fixed::~Fixed(void) {}
 
 // Operators
 Fixed& Fixed::operator=(Fixed const&  rhs)

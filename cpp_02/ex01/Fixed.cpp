@@ -2,7 +2,7 @@
 
 const int	Fixed::_fractional_bits = 8;
 // Constructors
-Fixed::Fixed()
+Fixed::Fixed(void)
 {
 	this->_raw_bits = 0;
 	std::cout << "\e[0;33mDefault Constructor called\e[0m" << std::endl;
@@ -25,7 +25,7 @@ Fixed::Fixed(const float float_number) {
 }
 
 // Destructor
-Fixed::~Fixed()
+Fixed::~Fixed(void)
 {
 	std::cout << "\e[0;31mDestructor called\e[0m" << std::endl;
 }

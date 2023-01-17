@@ -8,13 +8,13 @@ class Fixed
 {
 	public:
 		// Constructors
-		Fixed();
+		Fixed(void);
 		Fixed(const Fixed& copy);
 		Fixed(const int integer);
 		Fixed(const float float_number);
 
 		// Destructor
-		~Fixed();
+		~Fixed(void);
 
 		// Operators
 		Fixed& operator=(const Fixed& rhs);

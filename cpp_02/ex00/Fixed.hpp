@@ -8,11 +8,11 @@ class Fixed
 {
 	public:
 		// Constructors
-		Fixed();
+		Fixed(void);
 		Fixed(const Fixed& copy);
 
 		// Destructor
-		~Fixed();
+		~Fixed(void);
 
 		// Operators
 		Fixed& operator=(const Fixed& rhs);

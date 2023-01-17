@@ -14,7 +14,7 @@ class Fixed
 		Fixed(const float float_number);
 
 		// Destructor
-		~Fixed();
+		~Fixed(void);
 
 		// Operators
 		Fixed&	operator=(Fixed const& rhs);
