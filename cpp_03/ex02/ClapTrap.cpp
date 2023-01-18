@@ -6,15 +6,15 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 22:22:16 by jfrancis          #+#    #+#             */
-/*   Updated: 2023/01/17 22:56:20 by jfrancis         ###   ########.fr       */
+/*   Updated: 2023/01/17 22:55:43 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-int ClapTrap::_hit_points = 10;
-int ClapTrap::_energy_points = 10;
-int ClapTrap::_attack_damage = 0;
+int ClapTrap::_hit_points = 100;
+int ClapTrap::_energy_points = 50;
+int ClapTrap::_attack_damage = 20;
 
 // Constructors
 ClapTrap::ClapTrap(void) {
