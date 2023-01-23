@@ -29,8 +29,12 @@ ScavTrap::~ScavTrap() {
 }
 
 // Operators
-ScavTrap & ScavTrap::operator=(const ScavTrap &assign) {
-	(void) assign;
+ScavTrap & ScavTrap::operator=(const ScavTrap &copy) {
+	this->setName(copy.getName());
+	this->setHitPoints(copy.getHitPoints());
+	this->setEnergyPoints(copy.getEnergyPoints());
+	this->setAttackDamage(copy.getAttackDamage());
+	this->setModel(copy.getModel());
 	return *this;
 }
 

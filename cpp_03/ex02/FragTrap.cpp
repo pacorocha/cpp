@@ -29,8 +29,12 @@ FragTrap::~FragTrap() {
 }
 
 // Operators
-FragTrap & FragTrap::operator=(const FragTrap &assign) {
-	(void) assign;
+FragTrap & FragTrap::operator=(const FragTrap &copy) {
+	this->setName(copy.getName());
+	this->setHitPoints(copy.getHitPoints());
+	this->setEnergyPoints(copy.getEnergyPoints());
+	this->setAttackDamage(copy.getAttackDamage());
+	this->setModel(copy.getModel());
 	return *this;
 }
 

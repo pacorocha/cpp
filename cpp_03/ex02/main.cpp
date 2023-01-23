@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 22:22:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2023/01/23 20:01:34 by jfrancis         ###   ########.fr       */
+/*   Updated: 2023/01/23 20:13:53 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,16 @@ int	main(void) {
 	ClapTrap r3d3;
 	ScavTrap c3po("C3PO");
 	FragTrap e8t88("8t88");
+	FragTrap e8t89;
+	e8t89 = e8t88;
 
+	e8t89.highFivesGuys();
+	e8t89.attack(e8t88.getName());
+	if (e8t89.getEnergyPoints() > 0)
+		e8t88.takeDamage(e8t89.getAttackDamage());
+	c3po.attack(e8t89.getName());
+	if (c3po.getEnergyPoints() > 0)
+		e8t89.takeDamage(c3po.getAttackDamage());
 	for (int i = 0; i <= 10; i++) {
 		e8t88.attack(c3po.getName());
 		if (e8t88.getEnergyPoints() > 0)
