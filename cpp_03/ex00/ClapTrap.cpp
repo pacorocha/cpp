@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 22:22:16 by jfrancis          #+#    #+#             */
-/*   Updated: 2023/01/22 22:23:29 by jfrancis         ###   ########.fr       */
+/*   Updated: 2023/01/22 23:01:31 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ ClapTrap::ClapTrap(void) :
 	_energy_points(10),
 	_attack_damage(0),
 	_model("ClapTrap") {
-	std::cout << "\e[0;32mDefault Constructor called of ClapTrap\e[0m " + this->_name << std::endl;
+	std::cout << "\e[0;32mDefault Constructor called of " + this->_model + "\e[0m " + this->_name << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string const& name) :
@@ -28,24 +28,24 @@ ClapTrap::ClapTrap(std::string const& name) :
 	_energy_points(10),
 	_attack_damage(0),
 	_model("ClapTrap") {
-	std::cout << "\e[0;32mDefault String Constructor called of ClapTrap\e[0m " + this->_name << std::endl;
+	std::cout << "\e[0;32mDefault String Constructor called of " + this->_model + "\e[0m " + this->_name << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &copy) {
-	std::cout << "\e[0;32mCopy Constructor called of ClapTrap\e[0m " + copy._name << std::endl;
+	std::cout << "\e[0;32mCopy Constructor called of " + this->_model + "\e[0m " + copy._name << std::endl;
 	*this = copy;
 }
 
 // Destructor
-ClapTrap::~ClapTrap() {
-	std::cout << "\e[0;31mDestructor called of ClapTrap\e[0m " + this->_name << std::endl;
+ClapTrap::~ClapTrap(void) {
+	std::cout << "\e[0;31mDestructor called of " + this->_model + "\e[0m " + this->_name << std::endl;
 }
 
 // Operators
 ClapTrap & ClapTrap::operator=(const ClapTrap &source) {
-	std::cout << "\e[0;32mCopy assignment operator called of ClapTrap\e[0m " + source._name << std::endl;
-	this->_name = source._name;
-	this->_model = source._model;
+	std::cout << "\e[0;32mCopy assignment operator called of " + this->_model + "\e[0m " + source._name << std::endl;
+	this->_name = source.getName();
+	this->_model = source.getModel();
 	this->_hit_points = source.getHitPoints();
 	this->_energy_points = source.getEnergyPoints();
 	this->_attack_damage = source.getAttackDamage();
@@ -53,12 +53,32 @@ ClapTrap & ClapTrap::operator=(const ClapTrap &source) {
 	return (*this);
 }
 
+void ClapTrap::setName(std::string const &name) {
+	this->_name = name;
+}
+
+void ClapTrap::setHitPoints(int amount) {
+	this->_hit_points = amount;
+}
+
+void ClapTrap::setEnergyPoints(int amount) {
+	this->_energy_points = amount;
+}
+
+void ClapTrap::setAttackDamage(int amount) {
+	this->_attack_damage = amount;
+}
+
 int ClapTrap::getAttackDamage(void) const {
 	return (this->_attack_damage);
 }
 
-std::string ClapTrap::getName(void) {
+std::string ClapTrap::getName(void) const {
 	return (this->_name);
+}
+
+std::string ClapTrap::getModel(void) const {
+	return (this->_model);
 }
 
 int ClapTrap::getEnergyPoints(void) const {
