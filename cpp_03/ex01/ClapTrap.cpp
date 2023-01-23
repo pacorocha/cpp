@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 22:22:16 by jfrancis          #+#    #+#             */
-/*   Updated: 2023/01/22 23:10:21 by jfrancis         ###   ########.fr       */
+/*   Updated: 2023/01/23 19:30:46 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ ClapTrap & ClapTrap::operator=(const ClapTrap &source) {
 	return (*this);
 }
 
+// Methods
 void ClapTrap::setName(std::string const &name) {
 	this->_name = name;
 }
@@ -67,6 +68,10 @@ void ClapTrap::setEnergyPoints(int amount) {
 
 void ClapTrap::setAttackDamage(int amount) {
 	this->_attack_damage = amount;
+}
+
+void ClapTrap::setModel(std::string const &model) {
+	this->_model = model;
 }
 
 int ClapTrap::getAttackDamage(void) const {

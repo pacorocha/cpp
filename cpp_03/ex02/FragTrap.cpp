@@ -1,26 +1,31 @@
 #include "FragTrap.hpp"
 
 // Constructors
-FragTrap::FragTrap() {
-	this->_name.assign("Anonymous FragTrap");
-	this->_model.assign("FragTrap");
-	std::cout << "\e[0;33mDefault Constructor called of FragTrap\e[0m " + this->_name << std::endl;
+FragTrap::FragTrap() : ClapTrap() {
+	this->setName("Anonymous");
+	this->setHitPoints(100);
+	this->setEnergyPoints(100);
+	this->setAttackDamage(30);
+	this->setModel("FragTrap");
+	std::cout << "Default Constructor called of " + this->_model + "\e[0m " + this->_name << std::endl;
 }
 
-FragTrap::FragTrap(std::string name) {
-	this->_name = name;
-	this->_model.assign("FragTrap");
-	std::cout << "\e[0;33mDefault String Constructor called of FragTrap\e[0m " + this->_name << std::endl;
+FragTrap::FragTrap(std::string name) : ClapTrap(name) {
+	this->setHitPoints(100);
+	this->setEnergyPoints(100);
+	this->setAttackDamage(30);
+	this->setModel("FragTrap");
+	std::cout << "Default Constructor called of " + this->_model + "\e[0m " + this->_name << std::endl;
 }
 
-FragTrap::FragTrap(const FragTrap &copy) : ScavTrap() {
-	std::cout << "\e[0;33mCopy Constructor called of FragTrap\e[0m" + this->_name << std::endl;
+FragTrap::FragTrap(const FragTrap &copy) : ClapTrap() {
+	std::cout << "Copy Constructor called of " + this->_model + "\e[0m" + this->_name << std::endl;
 	*this = copy;
 }
 
 // Destructor
 FragTrap::~FragTrap() {
-	std::cout << "\e[0;31mDestructor called of FragTrap\e[0m" << std::endl;
+	std::cout << "\e[0;31mDestructor called of " + this->_model + "\e[0m" << std::endl;
 }
 
 // Operators
@@ -29,6 +34,6 @@ FragTrap & FragTrap::operator=(const FragTrap &assign) {
 	return *this;
 }
 
-void highFivesGuys(void) {
-	std::cout << this->_name + " says \"Gimme five, you guys!\"." << std::endl;
+void FragTrap::highFivesGuys(void) {
+	std::cout << this->_model + " " + this->_name + " says \"Gimme five, you guys!\"." << std::endl;
 }

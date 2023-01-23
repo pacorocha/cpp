@@ -5,7 +5,7 @@
 # include <string>
 # include "ScavTrap.hpp"
 
-class FragTrap : public ScavTrap
+class FragTrap : public ClapTrap
 {
 	public:
 		// Constructors
