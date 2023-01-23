@@ -1,13 +1,16 @@
 #include "ScavTrap.hpp"
 
 // Constructors
-ScavTrap::ScavTrap() {
-	this->_name.assign("Anonymous ScavTrap");
-	this->_model.assign("ScavTrap");
+ScavTrap::ScavTrap() : ClapTrap() {
+	this->_name = "Anonymous ScavTrap";
+	this->_model = "ScavTrap";
+	this->_hit_points = 100;
+	this->_energy_points = 100;
+	this->_attack_damage = 30; {
 	std::cout << "\e[0;33mDefault Constructor called of ScavTrap\e[0m " + this->_name << std::endl;
 }
 
-ScavTrap::ScavTrap(std::string name) {
+ScavTrap::ScavTrap(std::string name) : ClapTrap() {
 	this->_name = name;
 	this->_model.assign("ScavTrap");
 	std::cout << "\e[0;33mDefault String Constructor called of ScavTrap\e[0m " + this->_name << std::endl;

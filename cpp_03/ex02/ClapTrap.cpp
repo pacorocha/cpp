@@ -6,20 +6,21 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 22:22:16 by jfrancis          #+#    #+#             */
-/*   Updated: 2023/01/17 22:55:43 by jfrancis         ###   ########.fr       */
+/*   Updated: 2023/01/18 22:46:26 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-int ClapTrap::_hit_points = 100;
-int ClapTrap::_energy_points = 50;
-int ClapTrap::_attack_damage = 20;
+
 
 // Constructors
-ClapTrap::ClapTrap(void) {
-	this->_name.assign("Anonymous");
-	this->_model.assign("ClapTrap");
+ClapTrap::ClapTrap(void) :
+	_name("Anonymous"),
+	_model("ClapTrap"),
+	_hit_points(10),
+	_energy_points(10),
+	_attack_damage(0) {
 	std::cout << "\e[0;32mDefault Constructor called of ClapTrap\e[0m " + this->_name << std::endl;
 }
 
