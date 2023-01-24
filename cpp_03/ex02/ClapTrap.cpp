@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 22:22:16 by jfrancis          #+#    #+#             */
-/*   Updated: 2023/01/23 19:31:03 by jfrancis         ###   ########.fr       */
+/*   Updated: 2023/01/23 22:20:49 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ ClapTrap::ClapTrap(const ClapTrap &copy) {
 
 // Destructor
 ClapTrap::~ClapTrap(void) {
-	std::cout << "\e[0;31mDestructor called of " + this->_model + "\e[0m " + this->_name << std::endl;
+	std::cout << "\e[0;31mDestructor called of ClapTrap \e[0m " + this->_name << std::endl;
 }
 
 // Operators
