@@ -17,9 +17,6 @@ class WrongCat : public WrongAnimal
 
 		// Operators
 		WrongCat & operator=(const WrongCat &assign);
-
-		// Methods
-		void		makeSound(void) const;
 };
 
 #endif

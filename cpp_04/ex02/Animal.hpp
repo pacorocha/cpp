@@ -4,25 +4,25 @@
 # include <iostream>
 # include <string>
 
-class Animal
+class AAnimal
 {
 	public:
 		// Constructors
-		Animal(void);
-		Animal(const Animal &copy);
+		AAnimal(void);
+		AAnimal(const AAnimal &copy);
 
 		// Destructor
-		virtual ~Animal(void);
+		virtual ~AAnimal(void);
 
 		// Operators
-		Animal & operator=(const Animal &assign);
+		AAnimal & operator=(const AAnimal &assign);
 
 		// Methods
 		void		setType(std::string type);
 		void		setSound(std::string sound);
 		std::string	getType(void) const;
 		std::string	getSound(void) const;
-		void		makeSound(void) const;
+		virtual void makeSound(void) = 0;
 
 	protected:
 		std::string type;

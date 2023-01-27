@@ -30,6 +30,6 @@ std::string	WrongAnimal::getType(void) const {
 	return (this->type);
 }
 
-void	WrongAnimal::makeSound(void) const {
+void	WrongAnimal::makeSound() const {
 	std::cout << "The " + this->type + " makes sound." << std::endl;
 }

@@ -17,5 +17,10 @@ int	main(void) {
 	wrongmeta->makeSound();
 	k->makeSound();
 
+	delete meta;
+	delete j;
+	delete i;
+	delete wrongmeta;
+	delete k;
 	return (0);
 }

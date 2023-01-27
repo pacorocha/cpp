@@ -25,6 +25,3 @@ WrongCat & WrongCat::operator=(const WrongCat &assign)
 	this->type = assign.type;
 	return *this;
 }
-void	WrongCat::makeSound(void) const {
-	std::cout << "The " + this->type + " meows." << std::endl;
-}

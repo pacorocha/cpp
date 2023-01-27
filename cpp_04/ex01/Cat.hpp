@@ -2,6 +2,7 @@
 # define CAT_HPP
 
 # include "Animal.hpp"
+# include "Brain.hpp"
 
 class Cat : public Animal
 {
@@ -15,6 +16,9 @@ class Cat : public Animal
 
 		// Operators
 		Cat & operator=(const Cat &assign);
+
+	private:
+		Brain* brain;
 };
 
 #endif

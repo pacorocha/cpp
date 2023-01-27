@@ -2,8 +2,9 @@
 # define DOG_HPP
 
 # include "Animal.hpp"
+# include "Brain.hpp"
 
-class Dog : public Animal
+class Dog : public AAnimal
 {
 	public:
 		// Constructors
@@ -15,6 +16,12 @@ class Dog : public Animal
 
 		// Operators
 		Dog & operator=(const Dog &assign);
+
+		// Methods
+		virtual void makeSound(void);
+
+	private:
+		Brain*	_brain;
 };
 
 #endif

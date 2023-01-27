@@ -5,18 +5,22 @@ Cat::Cat(void) : Animal()
 {
 	this->setType("Cat");
 	this->setSound("meows");
+	brain = new Brain();
 	std::cout << "\e[0;33mDefault Constructor called of Cat\e[0m" << std::endl;
 }
 
 Cat::Cat(const Cat &copy) : Animal()
 {
+	type = copy.type;
+	brain = new Brain();
+	*brain = *(copy.brain);
 	std::cout << "\e[0;33mCopy Constructor called of Cat\e[0m" << std::endl;
-	*this = copy;
 }
 
 // Destructor
 Cat::~Cat(void)
 {
+	delete brain;
 	std::cout << "\e[0;31mDestructor called of Cat\e[0m" << std::endl;
 }
 
