@@ -18,7 +18,7 @@ class Dog : public AAnimal
 		Dog & operator=(const Dog &assign);
 
 		// Methods
-		virtual void makeSound(void);
+		void makeSound(void) const;
 
 	private:
 		Brain*	_brain;

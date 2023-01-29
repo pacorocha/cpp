@@ -18,7 +18,7 @@ class Cat : public AAnimal
 		Cat & operator=(const Cat &assign);
 
 		// Methods
-		virtual void makeSound(void);
+		void makeSound(void) const;
 
 	private:
 		Brain* _brain;

@@ -32,6 +32,6 @@ Dog & Dog::operator=(const Dog &assign)
 	return *this;
 }
 
-void	Dog::makeSound(void) {
-	std::cout << "The " + this->type + " " + this->sound << std::endl;
+void	Dog::makeSound(void) const {
+	std::cout << "The " + this->type + " " + this->sound + " as a dog."<< std::endl;
 }

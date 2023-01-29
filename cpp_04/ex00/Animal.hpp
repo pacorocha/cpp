@@ -18,11 +18,11 @@ class Animal
 		Animal & operator=(const Animal &assign);
 
 		// Methods
-		void		setType(std::string type);
-		void		setSound(std::string sound);
-		std::string	getType(void) const;
-		std::string	getSound(void) const;
-		void		makeSound(void) const;
+		void			setType(std::string type);
+		void			setSound(std::string sound);
+		std::string		getType(void) const;
+		std::string		getSound(void) const;
+		virtual void	makeSound(void) const;
 
 	protected:
 		std::string type;

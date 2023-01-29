@@ -27,3 +27,7 @@ Dog & Dog::operator=(const Dog &assign)
 	this->setSound(assign.sound);
 	return *this;
 }
+
+void	Dog::makeSound(void) const {
+	std::cout << "The " + this->type + " " + this->sound + " as a dog."<< std::endl;
+}

@@ -45,6 +45,6 @@ std::string	AAnimal::getSound(void) const {
 	return (this->sound);
 }
 
-void	AAnimal::makeSound(void) {
+void	AAnimal::makeSound(void) const {
 	std::cout << "The " + this->type + " " + this->sound << std::endl;
 }

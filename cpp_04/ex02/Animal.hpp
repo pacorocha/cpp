@@ -22,7 +22,7 @@ class AAnimal
 		void		setSound(std::string sound);
 		std::string	getType(void) const;
 		std::string	getSound(void) const;
-		virtual void makeSound(void) = 0;
+		virtual void makeSound(void) const = 0;
 
 	protected:
 		std::string type;

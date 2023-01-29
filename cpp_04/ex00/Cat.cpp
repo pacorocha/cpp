@@ -27,3 +27,7 @@ Cat & Cat::operator=(const Cat &assign)
 	this->setSound(assign.sound);
 	return *this;
 }
+
+void	Cat::makeSound(void) const {
+	std::cout << "The " + this->type + " " + this->sound + " as a cat."<< std::endl;
+}

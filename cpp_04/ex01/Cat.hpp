@@ -17,6 +17,9 @@ class Cat : public Animal
 		// Operators
 		Cat & operator=(const Cat &assign);
 
+		// Methods
+		void	makeSound(void) const;
+
 	private:
 		Brain* brain;
 };
