@@ -23,7 +23,9 @@ int	main( void )
 	Form e = Form("63 E", 7, 150);
 	std::cout << std::endl;
 	std::cout << a;
+	a = b;
 	std::cout << b;
+	std::cout << a;
 	std::cout << e;
 	b.beSigned(klamm);
 	std::cout << b;

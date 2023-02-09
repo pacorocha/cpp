@@ -1,9 +1,9 @@
 #include "Bureaucrat.hpp"
 
 // Constructors
-Bureaucrat::Bureaucrat() :
-	_name(""),
-	_grade(1) {
+Bureaucrat::Bureaucrat() {
+	_name = "";
+	_grade = 0;
 	std::cout << "\e[0;33mDefault Constructor called of Bureaucrat\e[0m" << std::endl;
 }
 
@@ -14,7 +14,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat &copy) {
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
-	std::cout << "\e[0;33mFields name and grade Constructor called of Bureaucrat\e[0m" << std::endl;
+	std::cout << "\e[0;33mFields name and grade Constructor called of " + this->_name + "\e[0m" << std::endl;
 	if (grade < 1)
 		throw Bureaucrat::GradeTooLowException();
 	else if (grade > 150)
@@ -35,7 +35,7 @@ Bureaucrat & Bureaucrat::operator=(const Bureaucrat &assign) {
 	return (*this);
 }
 
-// Getters / Setters
+// Getters
 std::string Bureaucrat::getName() const {
 	return (_name);
 }
@@ -51,6 +51,7 @@ const char * Bureaucrat::GradeTooLowException::what() const throw() {
 	return "Grade too low, nothing done.";
 }
 
+// Methods
 void Bureaucrat::incrementGrade() {
 	std::cout << "Incrementing grade..." << std::endl;
 	if (this->_grade == 1)

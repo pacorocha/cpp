@@ -14,8 +14,12 @@ Form::Form(std::string name, int grade_to_sign, int grade_to_execute) :
 	_signed(false),
 	_grade_to_sign(grade_to_sign),
 	_grade_to_execute(grade_to_execute) {
-	verifyGrade(_grade_to_sign);
-	verifyGrade(_grade_to_execute);
+	if (_grade_to_sign < 1) {
+		throw GradeTooHighException();
+	}
+	if (_grade_to_sign > 150) {
+		throw GradeTooLowException();
+	}
 	std::cout << "\e[0;33mAttribute Constructor called of Form\e[0m" << std::endl;
 }
 
@@ -24,8 +28,12 @@ Form::Form(const Form &copy) {
 	_signed = copy.getSignedStatus();
 	_grade_to_sign = copy.getGradeToSign();
 	_grade_to_execute = copy.getGradeToExecute();
-	verifyGrade(_grade_to_sign);
-	verifyGrade(_grade_to_execute);
+	if (_grade_to_sign < 1) {
+		throw GradeTooHighException();
+	}
+	if (_grade_to_sign > 150) {
+		throw GradeTooLowException();
+	}
 	std::cout << "\e[0;33mCopy Constructor called of Form\e[0m" << std::endl;
 }
 
@@ -36,7 +44,8 @@ Form::~Form() {
 
 // Operators
 Form & Form::operator=(const Form &assign) {
-	(void) assign;
+	std::cout << "\e[0;33mCopy operator called of Form\e[0m" << std::endl;
+	this->_signed = assign.getSignedStatus();
 	return (*this);
 }
 
@@ -65,14 +74,6 @@ const char * Form::GradeTooLowException::what() const throw() {
 	return "Grade too low, no form for you.";
 }
 
-void Form::verifyGrade(int grade) {
-  if (grade < 1) {
-    throw GradeTooHighException();
-  }
-  if (grade > 150) {
-    throw GradeTooLowException();
-  }
-}
 
 void Form::beSigned(const Bureaucrat& signer) {
 	std::cout << "Checking if " + signer.getName() + " can sign the form..." << std::endl;
@@ -81,7 +82,7 @@ void Form::beSigned(const Bureaucrat& signer) {
 		std::cout << std::endl;
 		this->_signed = true;
 	} else {
-		std::cout << signer.getName() + " can't sign the form " + this->_name + "."<< std::endl;
+		std::cout << signer.getName() + " can't sign the form " + this->_name + "because he is low in the bureaucracy ladder."<< std::endl;
 		std::cout << std::endl;
 	}
 }

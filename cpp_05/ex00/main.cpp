@@ -61,5 +61,7 @@ int	main( void )
 		std::cout << e.what() << std::endl;
 	}
 	std::cout << std::endl;
+	Bureaucrat bert("Bert", 30);
+	std::cout << bert;
 	return ( 0 );
 }

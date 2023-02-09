@@ -36,7 +36,6 @@ class Form
 		};
 
 		// Methods
-		void verifyGrade(int grade);
 		void beSigned(const Bureaucrat& signer);
 
 	private:
