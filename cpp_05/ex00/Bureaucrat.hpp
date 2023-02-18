@@ -22,6 +22,7 @@ class Bureaucrat
 		// Getters / Setters
 		std::string getName() const;
 		int getGrade() const;
+		void setName(std::string name) const;
 
 		// Methods
 		void incrementGrade();
@@ -36,7 +37,7 @@ class Bureaucrat
 		};
 
 	private:
-		std::string _name;
+		const std::string _name;
 		int _grade;
 
 };

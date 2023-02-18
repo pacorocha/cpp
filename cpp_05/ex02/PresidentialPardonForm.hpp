@@ -20,7 +20,7 @@ class PresidentialPardonForm : public AForm
 		PresidentialPardonForm & operator=(const PresidentialPardonForm &assign);
 
 		// Methods
-		void execute(Bureaucrat const & executor) const;
+		virtual void	formAction(const AForm& form) const;
 
 	private:
 

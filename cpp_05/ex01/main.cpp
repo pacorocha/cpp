@@ -5,6 +5,7 @@ int	main( void )
 	Form a;
 	Form b = Form("27 B", 3, 25);
 	Bureaucrat klamm("Klamm", 5);
+	Bureaucrat vp("VP", 2);
 	std::cout << klamm;
 	std::cout << std::endl;
 	std::cout << "Creating form with grade -1..." << std::endl;
@@ -27,9 +28,13 @@ int	main( void )
 	std::cout << b;
 	std::cout << a;
 	std::cout << e;
+	std::cout << "Test if Klamm can sign b" << std::endl;
 	b.beSigned(klamm);
+	std::cout << std::endl;
+	b.beSigned(vp);
+	std::cout << std::endl;
 	std::cout << b;
-	e.beSigned(klamm);
+	klamm.signForm(e);
 	std::cout << e;
 	return ( 0 );
 }

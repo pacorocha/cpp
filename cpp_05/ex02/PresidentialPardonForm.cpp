@@ -40,11 +40,7 @@ PresidentialPardonForm & PresidentialPardonForm::operator=(const PresidentialPar
 }
 
 // Methods
-void PresidentialPardonForm::execute(Bureaucrat const & executor) const {
-	if(this->canExecute(executor)) {
-	std::cout << this->getTarget() + " has been pardoned by Zaphod Beeblebrox." << std::endl;
-	std::cout << this->getName() + " executed by " + executor.getName() + "." << std::endl;
-	} else {
-		std::cout << this->getName() + " couldn't be executed by " + executor.getName() + "." << std::endl;
-	}
+void PresidentialPardonForm::formAction(const AForm& form) const {
+	std::cout << form.getTarget() + " has been pardoned by Zaphod Beeblebrox." << std::endl;
+	std::cout << form.getName() + " was executed." << std::endl;
 }

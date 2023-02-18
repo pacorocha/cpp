@@ -1,14 +1,14 @@
 #include "Bureaucrat.hpp"
 
 // Constructors
-Bureaucrat::Bureaucrat() {
-	_name = "";
+Bureaucrat::Bureaucrat() :
+	_name("John") {
 	_grade = 0;
 	std::cout << "\e[0;33mDefault Constructor called of Bureaucrat\e[0m" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &copy) {
-	_name = copy.getName();
+Bureaucrat::Bureaucrat(const Bureaucrat &copy) :
+	_name(copy.getName()) {
 	_grade = copy.getGrade();
 	std::cout << "\e[0;33mCopy Constructor called of Bureaucrat\e[0m" << std::endl;
 }
@@ -30,7 +30,6 @@ Bureaucrat::~Bureaucrat() {
 
 // Operators
 Bureaucrat & Bureaucrat::operator=(const Bureaucrat &assign) {
-	_name = assign.getName();
 	_grade = assign.getGrade();
 	return (*this);
 }
@@ -66,6 +65,19 @@ void Bureaucrat::decrementGrade() {
 		throw Bureaucrat::GradeTooLowException();
 	else
 		this->_grade++;
+}
+
+void Bureaucrat::signForm(Form& form) {
+	try {
+		form.beSigned(*this);
+	}
+	catch(const std::exception& e) {
+		std::cerr << this->_name + " cannot sign " + form.getName() + ". " << e.what() << std::endl;
+		return ;
+	}
+	std::cout << this->_name + " signs " + form.getName() << std::endl;
+	std::cout << std::endl;
+	return ;
 }
 
 std::ostream & operator<<( std::ostream & o, Bureaucrat const & rhs ) {

@@ -22,7 +22,7 @@ class RobotomyRequestForm : public AForm
 		RobotomyRequestForm & operator=(const RobotomyRequestForm &assign);
 
 		// Methods
-		void execute(Bureaucrat const & executor) const;
+		virtual void	formAction(const AForm& form) const;
 
 	private:
 

@@ -14,24 +14,24 @@ Form::Form(std::string name, int grade_to_sign, int grade_to_execute) :
 	_signed(false),
 	_grade_to_sign(grade_to_sign),
 	_grade_to_execute(grade_to_execute) {
-	if (_grade_to_sign < 1) {
+	if (_grade_to_sign < 1 || _grade_to_execute < 1) {
 		throw GradeTooHighException();
 	}
-	if (_grade_to_sign > 150) {
+	if (_grade_to_sign > 150 || _grade_to_execute > 150) {
 		throw GradeTooLowException();
 	}
 	std::cout << "\e[0;33mAttribute Constructor called of Form\e[0m" << std::endl;
 }
 
-Form::Form(const Form &copy) {
-	_name = copy.getName();
-	_signed = copy.getSignedStatus();
-	_grade_to_sign = copy.getGradeToSign();
-	_grade_to_execute = copy.getGradeToExecute();
-	if (_grade_to_sign < 1) {
+Form::Form(const Form &copy) :
+	_name(copy.getName()),
+	_signed(copy.getSignedStatus()),
+	_grade_to_sign(copy.getGradeToSign()),
+	_grade_to_execute(copy.getGradeToExecute()) {
+	if (_grade_to_sign < 1 || _grade_to_execute < 1) {
 		throw GradeTooHighException();
 	}
-	if (_grade_to_sign > 150) {
+	if (_grade_to_sign > 150 || _grade_to_execute > 150) {
 		throw GradeTooLowException();
 	}
 	std::cout << "\e[0;33mCopy Constructor called of Form\e[0m" << std::endl;
@@ -68,22 +68,24 @@ int	Form::getGradeToExecute() const {
 
 // Exceptions
 const char * Form::GradeTooHighException::what() const throw() {
-	return "Grade too high, no form for you.";
+	return "Grade too high, give back that form!";
 }
 const char * Form::GradeTooLowException::what() const throw() {
-	return "Grade too low, no form for you.";
+	return "Grade too low, give back that form!";
 }
 
 
 void Form::beSigned(const Bureaucrat& signer) {
-	std::cout << "Checking if " + signer.getName() + " can sign the form..." << std::endl;
-	if (signer.getGrade() <= this->_grade_to_sign) {
-		std::cout << signer.getName() + " signed the form " + this->_name + "."<< std::endl;
-		std::cout << std::endl;
-		this->_signed = true;
-	} else {
-		std::cout << signer.getName() + " can't sign the form " + this->_name + "because he is low in the bureaucracy ladder."<< std::endl;
-		std::cout << std::endl;
+	std::cout << "Checking if " + this->getName() + " can be signed by " + signer.getName() << std::endl;
+	try {
+		if (signer.getGrade() > this->getGradeToSign())
+			throw Form::GradeTooLowException();
+		else
+			this->_signed = true;
+	}
+	catch (std::exception& e) {
+		std::cout << e.what() << std::endl;
+		return;
 	}
 }
 

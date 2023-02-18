@@ -24,7 +24,7 @@ class ShrubberyCreationForm : public AForm
 		};
 
 		// Methods
-		void execute(Bureaucrat const & executor) const;
+		virtual void	formAction(const AForm& form) const;
 
 	private:
 

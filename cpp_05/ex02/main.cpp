@@ -8,12 +8,14 @@ int	main( void )
 	std::cout << test << std::endl;
 	Bureaucrat smith("Smith", 140);
 	std::cout << std::endl;
-	test.execute(smith);
+	smith.executeForm(test);
 	std::cout << std::endl;
-	test.beSigned(smith);
+	smith.signForm(test);
+	std::cout << std::endl;
+	smith.executeForm(test);
 	std::cout << std::endl;
 	Bureaucrat coltrane("Coltrane", 120);
-	test.execute(coltrane);
+	coltrane.executeForm(test);
 	std::cout << std::endl;
 	Bureaucrat mulder("Mulder", 76);
 	std::cout << std::endl;
@@ -24,13 +26,14 @@ int	main( void )
 	std::cout << marvin << std::endl;
 	marvin.beSigned(mulder);
 	std::cout << std::endl;
-	marvin.execute(scully);
+	scully.executeForm(marvin);
 	std::cout << std::endl;
 	std::cout << marvin << std::endl;
-	marvin.beSigned(scully);
-	marvin.execute(mulder);
+	scully.signForm(marvin);
+	mulder.executeForm(marvin);
 	std::cout << std::endl;
-	marvin.execute(scully);
+	mulder.executeForm(marvin);
+	scully.executeForm(marvin);
 	std::cout << std::endl;
 	Bureaucrat smokingman("Smoking Man", 25);
 	std::cout << std::endl;
@@ -39,7 +42,7 @@ int	main( void )
 	std::cout << std::endl;
 	Bureaucrat lewinsky("Lewinsky", 5);
 	std::cout << std::endl;
-	alien.execute(lewinsky);
+	lewinsky.executeForm(alien);
 	std::cout << std::endl;
 	return ( 0 );
 }

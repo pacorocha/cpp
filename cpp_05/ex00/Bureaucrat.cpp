@@ -2,13 +2,13 @@
 
 // Constructors
 Bureaucrat::Bureaucrat() :
-	_name(""),
+	_name("John"),
 	_grade(1) {
 	std::cout << "\e[0;33mDefault Constructor called of Bureaucrat\e[0m" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &copy) {
-	_name = copy.getName();
+Bureaucrat::Bureaucrat(const Bureaucrat &copy) :
+	_name(copy.getName()) {
 	_grade = copy.getGrade();
 	std::cout << "\e[0;33mCopy Constructor called of Bureaucrat\e[0m" << std::endl;
 }
@@ -30,8 +30,7 @@ Bureaucrat::~Bureaucrat() {
 
 // Operators
 Bureaucrat & Bureaucrat::operator=(const Bureaucrat &assign) {
-	_name = assign.getName();
-	_grade = assign.getGrade();
+	this->_grade = assign.getGrade();
 	return (*this);
 }
 

@@ -43,28 +43,24 @@ const char * ShrubberyCreationForm::FileOutputException::what() const throw() {
 }
 
 // Methods
-void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
-	if(this->canExecute(executor)) {
-		std::ofstream	outputFile(this->getTarget().append("_shrubbery").c_str());
-		std::string trees =
-			"               ,@@@@@@@,\n"
-			"       ,,,.   ,@@@@@@/@@,  .oo8888o.\n"
-			"    ,&%%&%&&%,@@@@@/@@@@@@,8888|88/8o\n"
-			"   ,%&|%&&%&&%,@@@|@@@/@@@88|88888/88'\n"
-			"   %&&%&%&/%&&%@@|@@/ /@@@88888|88888'\n"
-			"   %&&%/ %&%%&&@@| V /@@' `88|8 `/88'\n"
-			"   `&%| ` /%&'    |.|        | '|8'\n"
-			"       |o|        | |         | |\n"
-			"       |.|        | |         | |\n"
-			"jgs__ ||/ ._|//_/__/  ,|_//__||/.  |_//__/_\n";
-		if (outputFile.fail())
-			throw ShrubberyCreationForm::FileOutputException();
-		outputFile << trees;
-		outputFile.close();
-		std::cout << this->getName() + " executed by " + executor.getName() + "." << std::endl;
-		std::cout << "File: "+ this->getTarget() + "_shrubbery created." << std::endl;
-	} else {
-		std::cout << this->getName() + " couldn't be executed by " + executor.getName() + "." << std::endl;
-	}
+void ShrubberyCreationForm::formAction(const AForm& form) const {
+	std::ofstream	outputFile(this->getTarget().append("_shrubbery").c_str());
+	std::string trees =
+		"               ,@@@@@@@,\n"
+		"       ,,,.   ,@@@@@@/@@,  .oo8888o.\n"
+		"    ,&%%&%&&%,@@@@@/@@@@@@,8888|88/8o\n"
+		"   ,%&|%&&%&&%,@@@|@@@/@@@88|88888/88'\n"
+		"   %&&%&%&/%&&%@@|@@/ /@@@88888|88888'\n"
+		"   %&&%/ %&%%&&@@| V /@@' `88|8 `/88'\n"
+		"   `&%| ` /%&'    |.|        | '|8'\n"
+		"       |o|        | |         | |\n"
+		"       |.|        | |         | |\n"
+		"jgs__ ||/ ._|//_/__/  ,|_//__||/.  |_//__/_\n";
+	if (outputFile.fail())
+		throw ShrubberyCreationForm::FileOutputException();
+	outputFile << trees;
+	outputFile.close();
+	std::cout << form.getName() + " was executed." << std::endl;
+	std::cout << "File: "+ form.getTarget() + "_shrubbery created." << std::endl;
 }
 

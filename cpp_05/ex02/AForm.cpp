@@ -93,43 +93,47 @@ std::string	AForm::getTarget() const {
 
 // Exceptions
 const char * AForm::GradeTooHighException::what() const throw() {
-	return "Grade too high.\n";
+	return "Grade is too high.\n";
 }
 
 const char * AForm::GradeTooLowException::what() const throw() {
-	return "Grade too low.\n";
+	return "Grade is too low.\n";
 }
 
 const char* AForm::FormNotSignedException::what( void ) const throw() {
-	return ( "Form is not signed, go back to the line.\n" );
+	return ( "Form is not signed, go get it signed and bring it back after that.\n" );
 }
 
 // Methods
 void AForm::beSigned(const Bureaucrat& signer) {
 	std::cout << "Checking if " + signer.getName() + " can sign the " + this->_name + "..." << std::endl;
-	if (signer.getGrade() <= this->_grade_to_sign) {
-		std::cout << signer.getName() + " signed the " + this->_name + "."<< std::endl;
-		std::cout << std::endl;
-		this->_signed = true;
+	if (this->_signed == true) {
+		std::cout << "Form is already signed.\n";
+		return ;
 	} else {
-		std::cout << signer.getName() + " can't sign the " + this->_name + " because he is low in the bureaucracy ladder."<< std::endl;
+		try {
+			if (signer.getGrade() > this->getGradeToSign())
+				throw AForm::GradeTooLowException();
+		}
+		catch (std::exception& e) {
+			std::cout << e.what() << std::endl;
+			return;
+		}
+		this->_signed = true;
+		std::cout << this->getName() + " was signed by " + signer.getName() << std::endl;
 		std::cout << std::endl;
+		return ;
 	}
 }
 
-bool AForm::canExecute(Bureaucrat const& executor) const {
-	try {
-		if (this->getSignedStatus() == false)
-			throw FormNotSignedException();
-		if (executor.getGrade() > this->getGradeToExecute())
-			throw GradeTooLowException();
-	}
-	catch (FormNotSignedException& e) {
-		std::cout << e.what();
+bool AForm::execute(const Bureaucrat& executor) const {
+	std::cout << executor.getName() + " tries to execute " + this->getName() + "." << std::endl;
+	if (this->getSignedStatus() == false) {
+		throw AForm::FormNotSignedException();
 		return (false);
 	}
-	catch (GradeTooLowException& e) {
-		std::cout << e.what();
+	if (executor.getGrade() > this->getGradeToExecute()) {
+		throw AForm::GradeTooLowException();
 		return (false);
 	}
 	return (true);

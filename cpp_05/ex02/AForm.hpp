@@ -51,9 +51,8 @@ class AForm
 
 		// Methods
 		void			beSigned(const Bureaucrat& signer);
-		bool			canExecute(Bureaucrat const& executor) const;
-		virtual void	execute(Bureaucrat const& executor) const = 0;
-
+		bool			execute(Bureaucrat const& executor) const;
+		virtual void	formAction(const AForm& form) const = 0;
 
 	private:
 		std::string	_name;

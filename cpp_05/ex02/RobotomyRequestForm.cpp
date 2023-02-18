@@ -39,8 +39,7 @@ RobotomyRequestForm & RobotomyRequestForm::operator=(const RobotomyRequestForm &
 	return (*this);
 }
 
-void RobotomyRequestForm::execute(Bureaucrat const & executor) const {
-	if(this->canExecute(executor)) {
+void RobotomyRequestForm::formAction(const AForm& form) const {
 	srand(time(0));
 	std::cout << "bzzzzzzzzzzzzz..." << std::endl;
 	std::cout << "bzzzzzz... bzzzzz..." << std::endl;
@@ -49,8 +48,5 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const {
 			std::cout << "ROBOTOMY WAS SUCCESSFUL!" << std::endl;
 		else
 			std::cout << "ROBOTOMY FAILED... MISERABLY" << std::endl;
-	std::cout << this->getName() + " executed by " + executor.getName() + "." << std::endl;
-	} else {
-		std::cout << this->getName() + " couldn't be executed by " + executor.getName() + "." << std::endl;
-	}
+	std::cout << form.getName() + " was executed." << std::endl;
 }
