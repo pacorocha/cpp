@@ -45,6 +45,7 @@ class Convert
 		bool					_isInt(std::string const &str);
 		bool					_isFloat(std::string const &str);
 		bool					_isDouble(std::string const &str);
+		bool					_checkSign(int i, std::string str);
 };
 
 #endif

@@ -81,17 +81,47 @@ void Convert::_checkType(void) {
 	}
 }
 
-bool Convert::*_isChar(std::string const &str) {
+bool Convert::_checkSign(int i, std::string str) {
+	if (i == 0 && str[i] == '-')
+		return (true);
+	return(false);
+}
 
+bool Convert::_isChar(std::string const &str) {
+	if (str.length() == 1 && !std::isdigit(str[0]))
+		return (true);
+	else
+		return (false);
 }
 
 bool Convert::_isInt(std::string const &str) {
+	for (size_t i = 0; i < str.length(); i++) {
+		if (_checkSign(i, str))
+			if (!std::isdigit(str[i]))
+				return (false);
+	}
+	return (true);
 }
 
 bool Convert::_isFloat(std::string const &str) {
+	if (str.find('f') == std::string::npos)
+		return (false);
+	for (size_t i = 0; i < str.length(); i++) {
+		if (_checkSign(i, str))
+			if (!std::isdigit(str[i]) && str[i] != '.' && str[i] != 'f')
+				return (false);
+	}
+	return (true);
 }
 
 bool Convert::_isDouble(std::string const &str) {
+	if (str.find('.') == std::string::npos)
+		return (false);
+	for (size_t i = 0; i < str.length())
+		if(_checkSign(i, str))
+			if (!std::isdigit(str[i]) && str[i] != '.')
+				return (false);
+	return (true);
 }
 
 
