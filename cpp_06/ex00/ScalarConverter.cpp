@@ -94,7 +94,7 @@ void ScalarConverter::_printConversion(void) {
 	else
 		std::cout << "char: '" << _valueAsChar << "'" << std::endl;
 	std::cout << "int: " <<  _valueAsInt << std::endl;
-	std::cout << "float: " << _valueAsFloat << std::endl;
+	std::cout << "float: " << _valueAsFloat << "f" << std::endl;
 	std::cout << "double: " << _valueAsDouble << std::endl;
 }
 
