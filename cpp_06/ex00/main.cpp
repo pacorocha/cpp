@@ -1,4 +1,4 @@
-#include "Convert.hpp"
+#include "ScalarConverter.hpp"
 
 static int	validInput(void) {
 	std::cerr << "This program accepts only 1 argument." << std::endl;
@@ -14,7 +14,6 @@ static bool checkArgs(int argc) {
 int main(int argc, char** argv) {
 	if (checkArgs(argc))
 		return (validInput());
-
-	std::cout << argv[1] << std::endl;
+	ScalarConverter::convert(argv[1]);
 	return (0);
 }

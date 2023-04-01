@@ -1,8 +1,8 @@
 CC		= c++
 CFLAGS	= -g -Wall -Wextra -Werror -std=c++98
-NAME 	= convert
+NAME 	= converter
 SRC 	= main.cpp \
-		  Convert.cpp
+		  ScalarConverter.cpp
 OBJ		= $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR	= obj
 
