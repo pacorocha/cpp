@@ -8,22 +8,29 @@
 
 Base*	generate(void) {
 	srand(time(0));
-	unsigned int seed = rand() % 3;
+	unsigned int seed = rand() % 4;
+
 	if (seed == 0)
 		return new A;
 	else if (seed == 1)
 		return new B;
-	else
+	else if (seed == 2)
 		return new C;
+	else {
+		std::cout << "Error: object pointer couldn't be generated." << std::endl;
+		return NULL;
+	}
 }
 
 void	identify(Base* p) {
 	if (dynamic_cast<A*>(p))
 		std::cout << "The object pointer is type A" << std::endl;
-	if (dynamic_cast<B*>(p))
+	else if (dynamic_cast<B*>(p))
 		std::cout << "The object pointer is type B" << std::endl;
-	if (dynamic_cast<C*>(p))
+	else if (dynamic_cast<C*>(p))
 		std::cout << "The object pointer is type C" << std::endl;
+	else
+		std::cout << "Error: Couldn't identify pointer" << std::endl;
 }
 
 void	identify(Base& p) {
@@ -52,10 +59,14 @@ void	identify(Base& p) {
 
 int main(void) {
 	Base* ptr = generate();
+
+	if (!ptr)
+		return (1);
 	Base& ref = *ptr;
 
 	identify(ptr);
 	identify(ref);
 
+	delete ptr;
 	return (0);
 }
