@@ -33,6 +33,11 @@
 		"chrono": "cpp",
 		"ratio": "cpp",
 		"fstream": "cpp",
-		"cstring": "cpp"
+		"cstring": "cpp",
+		"deque": "cpp",
+		"vector": "cpp",
+		"unordered_map": "cpp",
+		"functional": "cpp",
+		"optional": "cpp"
 	}
 }
