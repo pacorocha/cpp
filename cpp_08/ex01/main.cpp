@@ -7,7 +7,7 @@
 int main() {
 	Span s1 = Span(2);
 	s1.addNumber(6);
-	// s1.addNumber(15);
+	s1.addNumber(15);
 	std::cout << s1.shortestSpan() << std::endl;
 	std::cout << s1.longestSpan() << std::endl;
 
