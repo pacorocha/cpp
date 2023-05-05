@@ -22,7 +22,7 @@ void RPN::validateInput(std::string rpn_exp) {
 		if (isspace(rpn_exp[i]))
 			continue ;
 		else if (isdigit(rpn_exp[i]))
-			_op_stack.push(rpn_exp[i]);
+			_op_stack.push(rpn_exp[i] - '0');
 		else
 			_buildStack(rpn_exp[i]);
 	}
@@ -31,7 +31,7 @@ void RPN::validateInput(std::string rpn_exp) {
 
 void RPN::_buildStack(char op){
 	if (_op_stack.size() < 2) {
-		throw std::invalid_argument("Not enough operands for operator " + std::string(1, op));
+		throw std::invalid_argument("Not enough operands ");
 	}
 	int op2 = _op_stack.top();
 	_op_stack.pop();
