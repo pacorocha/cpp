@@ -28,6 +28,7 @@ int PmergeMe::get_size() const {
 
 // Methods
 void PmergeMe::validateInput(char** input) {
+	std::set<int> parsed_numbers;
 	for (int i = 1; i <= _size; i++) {
 		size_t len = strlen(input[i]);
 		for (size_t j = 0; j < len; j++) {
@@ -37,6 +38,12 @@ void PmergeMe::validateInput(char** input) {
 		int number = atoi(input[i]);
 		if (number <= 0)
 			throw std::invalid_argument("Argument is not a positive integer.");
+
+		std::set<int>::iterator it = parsed_numbers.find(number);
+		if (it != parsed_numbers.end())
+				throw std::invalid_argument("Duplicate number detected.");
+
+		parsed_numbers.insert(number);
 		_seq_vector.push_back(number);
 		_seq_deque.push_back(number);
 	}
