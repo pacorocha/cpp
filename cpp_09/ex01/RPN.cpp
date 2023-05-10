@@ -30,9 +30,8 @@ void RPN::validateInput(std::string rpn_exp) {
 };
 
 void RPN::_buildStack(char op){
-	if (_op_stack.size() < 2) {
+	if (_op_stack.size() < 2)
 		throw std::invalid_argument("Not enough operands ");
-	}
 	int op2 = _op_stack.top();
 	_op_stack.pop();
 	int op1 = _op_stack.top();
@@ -60,8 +59,7 @@ int RPN::_processOperations(char op, int op1, int op2) {
 };
 
 void RPN::getResult(void) {
-	if (_op_stack.size() != 1) {
+	if (_op_stack.size() != 1)
 		throw std::invalid_argument("Invalid input: expected one result");
-	}
 	std::cout << _op_stack.top() << std::endl;
 }
