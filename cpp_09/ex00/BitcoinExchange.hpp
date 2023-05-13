@@ -27,6 +27,7 @@ class BitcoinExchange
 
 		// Methods
 		double calculateValue(const std::string& str_date, double amount);
+		bool isLeap(int year);
 		bool isValidDate(const std::string& str_date);
 
 	private:
