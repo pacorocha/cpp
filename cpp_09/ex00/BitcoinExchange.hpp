@@ -8,6 +8,9 @@
 # include <algorithm>
 # include <limits>
 
+const int MAX_VALID_YR = 2023;
+const int MIN_VALID_YR = 2009;
+
 class BitcoinExchange
 {
 	public:

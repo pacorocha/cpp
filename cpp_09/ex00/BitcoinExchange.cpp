@@ -53,6 +53,8 @@ double BitcoinExchange::calculateValue(const std::string& str_date, double amoun
     try {
         if (amount < 0)
             throw std::invalid_argument("Error: not a positive number.");
+        if (!isValidDate(str_date))
+            throw std::invalid_argument("Error: invalid date => " + str_date);
         PriceList::iterator it;
         for (it = _price_list.begin(); it != _price_list.end(); ++it) {
             double value = it->second * amount;
@@ -63,10 +65,11 @@ double BitcoinExchange::calculateValue(const std::string& str_date, double amoun
             if (it->first > str_date) {
                 if (it == _price_list.begin())
                     throw std::invalid_argument("Error: bad input => " + str_date);
-                --it;
-                return it->second * amount;
+                return (--it)->second * amount;
             }
         }
+		if (it == _price_list.end())
+			return (--it)->second * amount;
         throw std::out_of_range("Error: could not find price for date " + str_date);
     } catch (const std::exception& e) {
         std::cerr << e.what() << std::endl;
@@ -84,9 +87,52 @@ void BitcoinExchange::_readFile(const std::string& input_file) {
         getline(iss, date_str, '|');
         getline(iss, value_str, '|');
         double amount = atof(value_str.c_str());
-
+		date_str = date_str.substr(0, date_str.size()-1);
         double value = this->calculateValue(date_str, amount);
 		if (value != 0.0)
         	std::cout << date_str << "=> " << amount << " = " << value << std::endl;
     }
+}
+
+static bool isLeap(int year)
+{
+// Return true if year
+// is a multiple of 4 and
+// not multiple of 100.
+// OR year is multiple of 400.
+return (((year % 4 == 0) &&
+         (year % 100 != 0)) ||
+         (year % 400 == 0));
+}
+
+bool BitcoinExchange::isValidDate(const std::string& str_date) {
+	std::string delimiter = "-";
+	std::string year_str = str_date.substr(0, 4);
+	std::string month_str = str_date.substr(5, 2);
+	std::string day_str = str_date.substr(8, 2);
+	int y, m, d;
+	std::istringstream year_ss(year_str);
+	std::istringstream month_ss(month_str);
+	std::istringstream day_ss(day_str);
+
+	if (str_date.length() != 10)
+		return false;
+	if (!(year_ss >> y) || !(month_ss >> m) || !(day_ss >> d)) {
+		return false;
+	}
+	if (y > MAX_VALID_YR || y < MIN_VALID_YR)
+		return false;
+	if (m < 1 || m > 12)
+		return false;
+	if (d < 1 || d > 31)
+		return false;
+	if (m == 2) {
+		if (isLeap(y))
+			return (d <= 29);
+		else
+			return (d <= 28);
+	}
+	if (m == 4 || m == 6 || m == 9 || m == 11)
+		return (d <= 30);
+	return true;
 }
