@@ -12,7 +12,7 @@ int main(int argc, char**argv) {
         rpn.validateInput(rpn_exp);
     } catch (std::exception &e) {
         std::cerr << "Error: " << e.what() << std::endl;
-        return (1));
+        return (1);
     }
 
 	return (0);

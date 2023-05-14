@@ -18,14 +18,21 @@ RPN & RPN::operator=(const RPN &assign) {
 };
 
 void RPN::validateInput(std::string rpn_exp) {
+	int operandCount = 0;
+	int operatorCount = 0;
 	for (size_t i = 0; i < rpn_exp.size(); i++) {
-		if (isspace(rpn_exp[i]))
-			continue ;
-		else if (isdigit(rpn_exp[i]))
+		if (std::isspace(rpn_exp[i]))
+			continue;
+		else if (std::isdigit(rpn_exp[i])) {
 			_op_stack.push(rpn_exp[i] - '0');
-		else
+			operandCount++;
+		} else {
 			_buildStack(rpn_exp[i]);
+			operatorCount++;
+		}
 	}
+	if (operandCount < 2 || operatorCount < 1)
+		throw std::invalid_argument("Invalid input: At least 2 operands and 1 operator required");
 	getResult();
 };
 

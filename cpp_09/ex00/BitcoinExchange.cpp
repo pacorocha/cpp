@@ -89,7 +89,7 @@ void BitcoinExchange::_readFile(const std::string& input_file) {
         double amount = atof(value_str.c_str());
 		date_str = date_str.substr(0, date_str.size()-1);
         double value = this->calculateValue(date_str, amount);
-		if (value != 0.0)
+		if (amount >= 0.0 && isValidDate(date_str) && amount < std::numeric_limits<int>::max())
         	std::cout << date_str << "=> " << amount << " = " << value << std::endl;
     }
 }
@@ -116,6 +116,8 @@ bool BitcoinExchange::isValidDate(const std::string& str_date) {
 		return false;
 	}
 	if (y > MAX_VALID_YR || y < MIN_VALID_YR)
+		return false;
+	if (y == MIN_VALID_YR && d == 1)
 		return false;
 	if (m < 1 || m > 12)
 		return false;

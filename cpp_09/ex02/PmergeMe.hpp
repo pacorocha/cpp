@@ -41,7 +41,8 @@ class PmergeMe
 	private:
 		std::vector<int> _seq_vector;
 		std::deque<int> _seq_deque;
-		int _size;
+		int 	_size;
+		double	_buildTime;
 
 		template <typename T>
 		void _merge(T& container, T& sorted_container);
